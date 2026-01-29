@@ -12,7 +12,6 @@
       --bg:#07090c;
       --bg2:#0b0f14;
       --card:rgba(255,255,255,.06);
-      --card2:rgba(255,255,255,.085);
       --stroke:rgba(255,255,255,.12);
       --text:#eef4ff;
       --muted:#a9b4c4;
@@ -113,7 +112,6 @@
       border-color: rgba(255,255,255,.12);
       background: rgba(255,255,255,.04);
     }
-
     .nav .cta{
       display:inline-flex; align-items:center; gap:8px;
       padding:10px 12px;
@@ -227,7 +225,6 @@
       background: linear-gradient(135deg, var(--accent), #9b7bff);
     }
     .btn.ghost{ background: transparent; }
-
     .icon{ width:18px; height:18px; display:inline-block; }
 
     .hero-side{
@@ -241,8 +238,12 @@
       justify-content:space-between;
       gap:12px;
     }
+
+    /* Ticks centered */
     .stat{
-      display:flex; gap:10px; align-items:flex-start;
+      display:flex;
+      gap:10px;
+      align-items:center; /* center tick vertically */
       padding:10px 12px;
       border-radius: 16px;
       background: rgba(255,255,255,.04);
@@ -256,7 +257,7 @@
       border:1px solid rgba(52,211,153,.35);
       position:relative;
       flex: 0 0 auto;
-      margin-top:1px;
+      margin:0; /* remove any offset */
     }
     .check::after{
       content:"";
@@ -311,6 +312,8 @@
       position:relative;
       overflow:hidden;
       transition: .18s ease;
+      display:flex;
+      flex-direction:column;
     }
     .app:hover{
       transform: translateY(-2px);
@@ -331,12 +334,21 @@
       justify-content:space-between;
       gap:10px;
     }
+
+    /* Prevent title overflow */
     .app-name{
       font-weight:850;
       letter-spacing:-.01em;
       font-size:15px;
       margin:0;
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp: 2;          /* clamp to 2 lines */
+      -webkit-box-orient: vertical;
+      word-break: break-word;
+      hyphens: auto;
     }
+
     .badge{
       font-size:11px;
       font-weight:800;
@@ -348,18 +360,29 @@
       border:1px solid rgba(124,92,255,.35);
       background: rgba(124,92,255,.12);
       flex: 0 0 auto;
+      white-space:nowrap;
     }
+
+    /* Balanced layout: fixed-ish description height, no overflow */
     .app-desc{
       margin:8px 0 0;
       font-size:13px;
       color: var(--muted);
-      min-height: 44px;
+      overflow:hidden;
+      display:-webkit-box;
+      -webkit-line-clamp: 3;          /* clamp to 3 lines */
+      -webkit-box-orient: vertical;
+      min-height: 60px;               /* stabilizes card heights */
+      word-break: break-word;
+      hyphens: auto;
     }
+
     .app-actions{
       margin-top:12px;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
+      margin-top:auto; /* push buttons to bottom */
     }
     .link-btn{
       display:inline-flex;
@@ -375,6 +398,7 @@
       transition:.18s ease;
       box-shadow: 0 0 0 0 var(--ring);
       width: 100%;
+      text-align:center;
     }
     .link-btn:hover{
       transform: translateY(-1px);
@@ -383,6 +407,22 @@
     .link-btn.primary{
       border:none;
       background: linear-gradient(135deg, var(--accent), #9b7bff);
+    }
+
+    /* Hida: future-ready (disabled until published) */
+    .app.disabled{
+      opacity:.72;
+    }
+    .link-btn[aria-disabled="true"]{
+      cursor:not-allowed;
+      opacity:.75;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:none;
+    }
+    .link-btn[aria-disabled="true"]:hover{
+      transform:none;
+      box-shadow:none;
     }
 
     /* ===== Footer ===== */
@@ -522,18 +562,16 @@
       <div class="card span-7" id="apps">
         <h2>Apps</h2>
         <p class="muted">
-          Production apps are listed below with direct Google Play and Privacy Policy buttons.
-          (Hida is excluded from the app list as requested.)
+          Published apps are listed below with direct Google Play and Privacy Policy buttons.
+          Hida will automatically be ready here when it goes live.
         </p>
 
         <div class="apps-grid">
 
-          <!-- Tarot Hamster (com.fluxquantic.tarothamster) -->
+          <!-- Tarot Hamster -->
           <article class="app" aria-label="Tarot Hamster app">
             <div class="app-top">
-              <div>
-                <p class="app-name">Tarot Hamster</p>
-              </div>
+              <p class="app-name">Tarot Hamster</p>
               <span class="badge">Lifestyle</span>
             </div>
             <p class="app-desc">
@@ -549,12 +587,10 @@
             </div>
           </article>
 
-          <!-- Marjory (com.marjory.app) -->
+          <!-- Marjory -->
           <article class="app" aria-label="Marjory app">
             <div class="app-top">
-              <div>
-                <p class="app-name">Marjory — Smart Productivity Companion</p>
-              </div>
+              <p class="app-name">Marjory — Smart Productivity Companion</p>
               <span class="badge">Productivity</span>
             </div>
             <p class="app-desc">
@@ -570,12 +606,10 @@
             </div>
           </article>
 
-          <!-- Calm Sense (app.calmsense.studio) -->
+          <!-- Calm Sense -->
           <article class="app" aria-label="Calm Sense app">
             <div class="app-top">
-              <div>
-                <p class="app-name">Calm Sense — Mental Well-Being App</p>
-              </div>
+              <p class="app-name">Calm Sense — Mental Well-Being App</p>
               <span class="badge">Well-Being</span>
             </div>
             <p class="app-desc">
@@ -591,11 +625,27 @@
             </div>
           </article>
 
-        </div>
+          <!-- Hida (future-ready; will work once live) -->
+          <article class="app disabled" aria-label="Hida Muslim App (coming soon)">
+            <div class="app-top">
+              <p class="app-name">Hida Muslim App</p>
+              <span class="badge">Coming Soon</span>
+            </div>
+            <p class="app-desc">
+              This app will appear as published once it is live on Google Play.
+            </p>
+            <div class="app-actions">
+              <!-- Keep the real URL; it will resolve once published. Disabled look until then. -->
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.hida" target="_blank" rel="noopener" aria-disabled="true">
+                Google Play (not live yet)
+              </a>
+              <a class="link-btn" href="https://sites.google.com/view/hidapp/ana-sayfa" target="_blank" rel="noopener">
+                Privacy Policy
+              </a>
+            </div>
+          </article>
 
-        <p class="small" style="margin-top:12px; opacity:.95">
-          App IDs used: <code>com.fluxquantic.tarothamster</code>, <code>com.marjory.app</code>, <code>app.calmsense.studio</code>.
-        </p>
+        </div>
       </div>
 
       <div class="card span-5" id="privacy">
@@ -646,5 +696,3 @@
   </script>
 </body>
 </html>
-
-

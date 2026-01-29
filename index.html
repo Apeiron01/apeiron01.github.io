@@ -243,7 +243,7 @@
     .stat{
       display:flex;
       gap:10px;
-      align-items:center; /* center tick vertically */
+      align-items:center;
       padding:10px 12px;
       border-radius: 16px;
       background: rgba(255,255,255,.04);
@@ -257,7 +257,7 @@
       border:1px solid rgba(52,211,153,.35);
       position:relative;
       flex: 0 0 auto;
-      margin:0; /* remove any offset */
+      margin:0;
     }
     .check::after{
       content:"";
@@ -290,11 +290,9 @@
       letter-spacing:-.01em;
     }
     .muted{ color: var(--muted); }
-    .small{ font-size:13px; color: var(--muted); }
 
     .span-7{ grid-column: span 7; }
     .span-5{ grid-column: span 5; }
-    .span-6{ grid-column: span 6; }
 
     /* ===== Apps ===== */
     .apps-grid{
@@ -328,25 +326,25 @@
       transform: rotate(18deg);
       pointer-events:none;
     }
+
+    /* ✅ CHANGE: title top becomes vertical (name then badge) */
     .app-top{
       display:flex;
+      flex-direction:column;
       align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
+      gap:6px;
     }
 
-    /* Prevent title overflow */
+    /* ✅ CHANGE: title becomes one-line horizontal, no clamp */
     .app-name{
       font-weight:850;
       letter-spacing:-.01em;
       font-size:15px;
       margin:0;
+      white-space:nowrap;
       overflow:hidden;
-      display:-webkit-box;
-      -webkit-line-clamp: 2;          /* clamp to 2 lines */
-      -webkit-box-orient: vertical;
-      word-break: break-word;
-      hyphens: auto;
+      text-overflow:ellipsis;
+      max-width:100%;
     }
 
     .badge{
@@ -363,26 +361,26 @@
       white-space:nowrap;
     }
 
-    /* Balanced layout: fixed-ish description height, no overflow */
+    /* description */
     .app-desc{
-      margin:8px 0 0;
+      margin:10px 0 0;
       font-size:13px;
       color: var(--muted);
       overflow:hidden;
       display:-webkit-box;
-      -webkit-line-clamp: 3;          /* clamp to 3 lines */
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      min-height: 60px;               /* stabilizes card heights */
+      min-height: 60px;
       word-break: break-word;
       hyphens: auto;
     }
 
     .app-actions{
-      margin-top:12px;
       display:flex;
       flex-wrap:wrap;
       gap:10px;
-      margin-top:auto; /* push buttons to bottom */
+      margin-top:auto;
+      padding-top:12px;
     }
     .link-btn{
       display:inline-flex;
@@ -409,10 +407,8 @@
       background: linear-gradient(135deg, var(--accent), #9b7bff);
     }
 
-    /* Hida: future-ready (disabled until published) */
-    .app.disabled{
-      opacity:.72;
-    }
+    /* Hida: future-ready */
+    .app.disabled{ opacity:.72; }
     .link-btn[aria-disabled="true"]{
       cursor:not-allowed;
       opacity:.75;
@@ -437,7 +433,7 @@
     /* ===== Responsive ===== */
     @media (max-width: 980px){
       .hero-inner{ grid-template-columns: 1fr; }
-      .span-7,.span-5,.span-6{ grid-column: span 12; }
+      .span-7,.span-5{ grid-column: span 12; }
       .app{ grid-column: span 6; }
     }
     @media (max-width: 620px){
@@ -497,30 +493,9 @@
           </div>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#apps" aria-label="See apps">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="2" opacity=".85"/>
-                <path d="M10 10h4v4h-4v-4Z" fill="currentColor" opacity=".9"/>
-              </svg>
-              Browse Apps
-            </a>
-
-            <a class="btn" href="#privacy" aria-label="Privacy policies">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M12 2 20 6v7c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-4Z"
-                      stroke="currentColor" stroke-width="2" opacity=".9"/>
-                <path d="M9.5 12.2 11 13.7 14.7 10" stroke="currentColor" stroke-width="2"/>
-              </svg>
-              Privacy Policies
-            </a>
-
-            <a class="btn ghost" href="mailto:luminadigitale@gmail.com" aria-label="Contact support">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
-                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
-              </svg>
-              Contact Support
-            </a>
+            <a class="btn primary" href="#apps" aria-label="See apps">Browse Apps</a>
+            <a class="btn" href="#privacy" aria-label="Privacy policies">Privacy Policies</a>
+            <a class="btn ghost" href="mailto:luminadigitale@gmail.com" aria-label="Contact support">Contact Support</a>
           </div>
         </div>
 
@@ -549,7 +524,7 @@
             </div>
           </div>
 
-          <div class="small" style="margin-top:auto;">
+          <div class="muted" style="margin-top:auto; font-size:13px;">
             Last updated: <span id="date"></span>
           </div>
         </aside>
@@ -635,7 +610,6 @@
               This app will appear as published once it is live on Google Play.
             </p>
             <div class="app-actions">
-              <!-- Keep the real URL; it will resolve once published. Disabled look until then. -->
               <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.hida" target="_blank" rel="noopener" aria-disabled="true">
                 Google Play (not live yet)
               </a>
@@ -661,7 +635,7 @@
         </div>
       </div>
 
-      <div class="card span-12" id="safety">
+      <div class="card" id="safety">
         <h2>Data Safety</h2>
         <p class="muted">
           Apps are designed with data minimization in mind. Personally identifiable information is not collected unless a feature explicitly requires it.
@@ -675,7 +649,7 @@
         </ul>
       </div>
 
-      <div class="card span-12">
+      <div class="card">
         <h2>Ownership</h2>
         <p class="muted">All rights reserved © <span id="year"></span> Taha Bayar</p>
       </div>

@@ -3,205 +3,648 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Taha Bayar – Developer Website</title>
-  <meta name="description" content="Official developer website for Taha Bayar apps. Privacy policies, support, and data safety."/>
+  <meta name="color-scheme" content="dark"/>
+  <title>Taha Bayar — Official Developer Website</title>
+  <meta name="description" content="Official developer website for Taha Bayar apps. Download links, privacy policies, support, and data safety."/>
+
   <style>
     :root{
-      --bg: #0b0d10;
-      --bg-soft: #111418;
-      --card: #14181d;
-      --text: #e9eef5;
-      --muted: #a7b0bb;
-      --accent: #7c5cff;
-      --accent-2: #22d3ee;
-      --ring: rgba(124,92,255,.35);
-      --radius: 18px;
-      --maxw: 980px;
+      --bg:#07090c;
+      --bg2:#0b0f14;
+      --card:rgba(255,255,255,.06);
+      --card2:rgba(255,255,255,.085);
+      --stroke:rgba(255,255,255,.12);
+      --text:#eef4ff;
+      --muted:#a9b4c4;
+      --muted2:#91a0b4;
+
+      --accent:#7c5cff;
+      --accent2:#22d3ee;
+      --ok:#34d399;
+
+      --ring: rgba(124,92,255,.28);
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --shadow2: 0 10px 30px rgba(0,0,0,.38);
+
+      --r: 22px;
+      --max: 1100px;
+      --font: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
     }
-    *{box-sizing:border-box}
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(124,92,255,.25), transparent 60%),
-        radial-gradient(900px 600px at 100% 0%, rgba(34,211,238,.18), transparent 55%),
-        var(--bg);
+      font-family:var(--font);
       color:var(--text);
-      line-height:1.6;
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 110% 0%, rgba(34,211,238,.16), transparent 55%),
+        radial-gradient(800px 500px at 50% 120%, rgba(124,92,255,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2) 65%, #06080b);
+      line-height:1.55;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:28px 18px 60px}
-    header{
-      display:grid; gap:18px;
-      padding:26px; border-radius:24px;
-      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.00));
-      border:1px solid rgba(255,255,255,.06);
-      box-shadow: 0 8px 30px rgba(0,0,0,.35);
-      position:relative; overflow:hidden;
+    a{ color:inherit; text-decoration:none; }
+    code{ color:#dbe6ff; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:18px 16px 64px; }
+
+    /* ===== Top Nav ===== */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      padding:12px 0;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(8,10,14,.78), rgba(8,10,14,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
-    .badge{
-      font-size:12px; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--muted); font-weight:700;
-      display:inline-flex; align-items:center; gap:8px;
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
     }
-    .badge .dot{
-      width:8px;height:8px;border-radius:999px;
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      box-shadow:0 0 0 4px rgba(124,92,255,.2);
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 180px;
     }
-    h1{margin:0;font-size:clamp(26px,4vw,38px);line-height:1.15}
-    .subtitle{color:var(--muted);font-size:clamp(14px,2vw,17px)}
-    .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
-    .btn{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 14px; border-radius:12px;
-      background:var(--card); border:1px solid rgba(255,255,255,.08);
-      color:var(--text); font-weight:600; font-size:14px;
-      transition:.2s ease; box-shadow: 0 0 0 0 var(--ring);
+    .logo{
+      width:38px;height:38px;border-radius:12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 12px 28px rgba(124,92,255,.22);
+      position:relative;
+      overflow:hidden;
     }
-    .btn:hover{transform:translateY(-1px);box-shadow:0 0 0 6px var(--ring)}
-    .btn.primary{
-      background: linear-gradient(135deg, var(--accent), #9b7bff);
-      border: none;
-      color:white;
+    .logo::after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.7), transparent 45%);
+      transform: rotate(20deg);
+      opacity:.55;
+    }
+    .brand-title{ display:flex; flex-direction:column; line-height:1.05; }
+    .brand-title b{ font-size:14px; letter-spacing:.2px; }
+    .brand-title span{ font-size:12px; color:var(--muted2); }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .nav a{
+      font-size:13px;
+      color:var(--muted);
+      padding:9px 10px;
+      border-radius:12px;
+      border:1px solid transparent;
+      transition:.18s ease;
+    }
+    .nav a:hover{
+      color:var(--text);
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
     }
 
-    main{margin-top:18px;display:grid;gap:14px}
-    .grid{
-      display:grid; gap:14px;
-      grid-template-columns:repeat(12,1fr);
+    .nav .cta{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:650;
+      box-shadow: 0 0 0 0 var(--ring);
+      transition:.18s ease;
+    }
+    .nav .cta:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 6px var(--ring);
+    }
+    .nav .cta.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), #9b7bff);
+      box-shadow: 0 16px 34px rgba(124,92,255,.18);
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      margin-top:18px;
+      border-radius: calc(var(--r) + 4px);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        radial-gradient(900px 500px at 10% 0%, rgba(124,92,255,.18), transparent 60%),
+        radial-gradient(700px 450px at 100% 10%, rgba(34,211,238,.12), transparent 55%);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(500px 240px at 30% 20%, rgba(255,255,255,.08), transparent 60%),
+        radial-gradient(420px 240px at 80% 30%, rgba(255,255,255,.06), transparent 65%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      padding:28px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:12px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .dot{
+      width:9px;height:9px;border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(124,92,255,.18);
+    }
+    h1{
+      margin:10px 0 0;
+      font-size: clamp(30px, 3.6vw, 44px);
+      line-height:1.08;
+      letter-spacing:-.02em;
+    }
+    .sub{
+      margin-top:10px;
+      color:var(--muted);
+      font-size: clamp(14px, 1.4vw, 16px);
+      max-width: 60ch;
+    }
+    .tagline{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .chip{
+      font-size:12px;
+      color:#dfe7ff;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.05);
+      padding:6px 10px;
+      border-radius:999px;
+    }
+    .hero-actions{
+      margin-top:16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:9px;
+      padding:11px 14px;
+      border-radius:14px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--text);
+      font-weight:700;
+      font-size:14px;
+      transition:.18s ease;
+      box-shadow: 0 0 0 0 var(--ring);
+    }
+    .btn:hover{ transform: translateY(-1px); box-shadow: 0 0 0 6px var(--ring); }
+    .btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), #9b7bff);
+    }
+    .btn.ghost{ background: transparent; }
+
+    .icon{ width:18px; height:18px; display:inline-block; }
+
+    .hero-side{
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(10,12,16,.35);
+      box-shadow: var(--shadow2);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .stat{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .stat b{ font-size:13px; }
+    .stat p{ margin:2px 0 0; font-size:12px; color:var(--muted); }
+    .check{
+      width:18px;height:18px;border-radius:6px;
+      background: rgba(52,211,153,.14);
+      border:1px solid rgba(52,211,153,.35);
+      position:relative;
+      flex: 0 0 auto;
+      margin-top:1px;
+    }
+    .check::after{
+      content:"";
+      position:absolute;
+      left:5px; top:3px;
+      width:5px; height:9px;
+      border-right:2px solid rgba(52,211,153,.95);
+      border-bottom:2px solid rgba(52,211,153,.95);
+      transform: rotate(35deg);
+    }
+
+    /* ===== Sections ===== */
+    .section{
+      margin-top:16px;
+      display:grid;
+      gap:14px;
+      grid-template-columns: repeat(12, 1fr);
     }
     .card{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,.07);
-      border-radius:var(--radius);
+      grid-column: span 12;
+      background: var(--card);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--r);
+      box-shadow: var(--shadow2);
       padding:18px;
-      box-shadow:0 6px 18px rgba(0,0,0,.3);
     }
-    .card h2{margin:0 0 8px;font-size:18px}
-    .muted{color:var(--muted)}
-    .span-6{grid-column:span 6}
-    .span-12{grid-column:span 12}
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      letter-spacing:-.01em;
+    }
+    .muted{ color: var(--muted); }
+    .small{ font-size:13px; color: var(--muted); }
 
-    ul{margin:8px 0 0 18px;padding:0}
-    li{margin:6px 0}
-    .apps li{
-      display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    .span-7{ grid-column: span 7; }
+    .span-5{ grid-column: span 5; }
+    .span-6{ grid-column: span 6; }
+
+    /* ===== Apps ===== */
+    .apps-grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns: repeat(12, 1fr);
+      margin-top:8px;
     }
-    .pill{
-      font-size:12px; font-weight:700; color:#d7d9ff;
-      background:rgba(124,92,255,.12); border:1px solid rgba(124,92,255,.35);
-      padding:2px 8px;border-radius:999px
+    .app{
+      grid-column: span 4;
+      border-radius: var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      transition: .18s ease;
     }
-    .link{
-      font-size:14px; color:#cfe2ff; text-decoration:underline; text-underline-offset:3px;
+    .app:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.07);
+    }
+    .app::before{
+      content:"";
+      position:absolute; inset:-40% -30% auto auto;
+      width:180px; height:180px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,.25), transparent 60%);
+      transform: rotate(18deg);
+      pointer-events:none;
+    }
+    .app-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+    }
+    .app-name{
+      font-weight:850;
+      letter-spacing:-.01em;
+      font-size:15px;
+      margin:0;
+    }
+    .badge{
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color:#dbe6ff;
+      padding:5px 9px;
+      border-radius:999px;
+      border:1px solid rgba(124,92,255,.35);
+      background: rgba(124,92,255,.12);
+      flex: 0 0 auto;
+    }
+    .app-desc{
+      margin:8px 0 0;
+      font-size:13px;
+      color: var(--muted);
+      min-height: 44px;
+    }
+    .app-actions{
+      margin-top:12px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .link-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.15);
+      font-weight:750;
+      font-size:13px;
+      transition:.18s ease;
+      box-shadow: 0 0 0 0 var(--ring);
+      width: 100%;
+    }
+    .link-btn:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 0 0 6px var(--ring);
+    }
+    .link-btn.primary{
+      border:none;
+      background: linear-gradient(135deg, var(--accent), #9b7bff);
     }
 
+    /* ===== Footer ===== */
     footer{
-      margin-top:18px; text-align:center; color:var(--muted); font-size:13px;
+      margin-top:18px;
+      text-align:center;
+      color: var(--muted);
+      font-size:13px;
+      opacity:.95;
     }
 
-    @media (max-width: 800px){
-      .span-6{grid-column:span 12}
-      header{padding:20px}
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .hero-inner{ grid-template-columns: 1fr; }
+      .span-7,.span-5,.span-6{ grid-column: span 12; }
+      .app{ grid-column: span 6; }
+    }
+    @media (max-width: 620px){
+      .app{ grid-column: span 12; }
+      .hero-inner{ padding:18px; }
+      .topbar-inner{ gap:10px; }
+      .brand{ min-width: unset; }
+      .nav .cta.primary{ width: 100%; justify-content:center; }
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; }
     }
   </style>
 </head>
+
 <body>
-  <div class="wrap">
+  <!-- Top Nav -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Home">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brand-title">
+          <b>Taha Bayar</b>
+          <span>Official Developer Website</span>
+        </div>
+      </a>
 
-    <header>
-      <div class="badge"><span class="dot"></span> Official Developer Website</div>
-      <h1>Taha Bayar</h1>
-      <div class="subtitle">
-        Biologist • Software Developer • E-commerce Specialist • Agency Owner
-      </div>
-      <div class="cta-row">
-        <!-- İstersen buraya Play Store geliştirici sayfanı ekleyebilirsin -->
-        <!-- <a class="btn primary" href="https://play.google.com/store/apps/dev?id=XXXX" target="_blank" rel="noopener">Google Play Developer Page</a> -->
-        <a class="btn" href="mailto:luminadigitale@gmail.com">Contact Support</a>
-        <a class="btn" href="#privacy">Privacy Policies</a>
-      </div>
-    </header>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#apps">Apps</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#safety">Data Safety</a>
+        <a class="cta" href="mailto:luminadigitale@gmail.com">Support</a>
+        <a class="cta primary" href="#apps">Get Apps</a>
+      </nav>
+    </div>
+  </div>
 
-    <main class="grid">
-      <section class="card span-12">
-        <h2>About</h2>
+  <div class="wrap" id="top">
+
+    <!-- Hero -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-inner">
+        <div>
+          <div class="kicker"><span class="dot"></span> Official Developer Website</div>
+          <h1>Taha Bayar</h1>
+          <p class="sub">
+            Biologist • Software Developer • E-commerce Specialist • Agency Owner
+            <br/>
+            Building practical apps for productivity, mental well-being, and lightweight user tools.
+          </p>
+
+          <div class="tagline" aria-label="Highlights">
+            <span class="chip">Privacy-first approach</span>
+            <span class="chip">Minimal data collection</span>
+            <span class="chip">Global audience</span>
+            <span class="chip">Fast support</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#apps" aria-label="See apps">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="2" opacity=".85"/>
+                <path d="M10 10h4v4h-4v-4Z" fill="currentColor" opacity=".9"/>
+              </svg>
+              Browse Apps
+            </a>
+
+            <a class="btn" href="#privacy" aria-label="Privacy policies">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2 20 6v7c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-4Z"
+                      stroke="currentColor" stroke-width="2" opacity=".9"/>
+                <path d="M9.5 12.2 11 13.7 14.7 10" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Privacy Policies
+            </a>
+
+            <a class="btn ghost" href="mailto:luminadigitale@gmail.com" aria-label="Contact support">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" opacity=".9"/>
+                <path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/>
+              </svg>
+              Contact Support
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-side" aria-label="Key notes">
+          <div class="stat">
+            <div class="check" aria-hidden="true"></div>
+            <div>
+              <b>Clear support channel</b>
+              <p>Single email for support, privacy, and compliance requests.</p>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="check" aria-hidden="true"></div>
+            <div>
+              <b>Privacy policy per app</b>
+              <p>Direct policy links for each published application.</p>
+            </div>
+          </div>
+
+          <div class="stat">
+            <div class="check" aria-hidden="true"></div>
+            <div>
+              <b>Data minimization</b>
+              <p>Apps prioritize offline/local processing where possible.</p>
+            </div>
+          </div>
+
+          <div class="small" style="margin-top:auto;">
+            Last updated: <span id="date"></span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="section">
+
+      <div class="card span-7" id="apps">
+        <h2>Apps</h2>
         <p class="muted">
-          I am a Biologist, Software Developer, E-commerce Specialist, and Agency Owner.
-          I develop mobile apps focused on productivity, mental well-being, and innovative user tools
-          for global audiences.
+          Production apps are listed below with direct Google Play and Privacy Policy buttons.
+          (Hida is excluded from the app list as requested.)
         </p>
-      </section>
 
-      <section class="card span-6">
+        <div class="apps-grid">
+
+          <!-- Tarot Hamster (com.fluxquantic.tarothamster) -->
+          <article class="app" aria-label="Tarot Hamster app">
+            <div class="app-top">
+              <div>
+                <p class="app-name">Tarot Hamster</p>
+              </div>
+              <span class="badge">Lifestyle</span>
+            </div>
+            <p class="app-desc">
+              Tarot readings, numerology and personal prompts with a privacy-first design.
+            </p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.fluxquantic.tarothamster" target="_blank" rel="noopener">
+                Get it on Google Play
+              </a>
+              <a class="link-btn" href="https://sites.google.com/view/tarothamster/ana-sayfa" target="_blank" rel="noopener">
+                Privacy Policy
+              </a>
+            </div>
+          </article>
+
+          <!-- Marjory (com.marjory.app) -->
+          <article class="app" aria-label="Marjory app">
+            <div class="app-top">
+              <div>
+                <p class="app-name">Marjory — Smart Productivity Companion</p>
+              </div>
+              <span class="badge">Productivity</span>
+            </div>
+            <p class="app-desc">
+              Lightweight calculators and planning tools focused on speed and simplicity.
+            </p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.marjory.app" target="_blank" rel="noopener">
+                Get it on Google Play
+              </a>
+              <a class="link-btn" href="https://sites.google.com/view/marjoryapp/ana-sayfa" target="_blank" rel="noopener">
+                Privacy Policy
+              </a>
+            </div>
+          </article>
+
+          <!-- Calm Sense (app.calmsense.studio) -->
+          <article class="app" aria-label="Calm Sense app">
+            <div class="app-top">
+              <div>
+                <p class="app-name">Calm Sense — Mental Well-Being App</p>
+              </div>
+              <span class="badge">Well-Being</span>
+            </div>
+            <p class="app-desc">
+              Mental well-being features with a minimal, user-controlled data approach.
+            </p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=app.calmsense.studio" target="_blank" rel="noopener">
+                Get it on Google Play
+              </a>
+              <a class="link-btn" href="https://sites.google.com/view/calmsense/ana-sayfa" target="_blank" rel="noopener">
+                Privacy Policy
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="small" style="margin-top:12px; opacity:.95">
+          App IDs used: <code>com.fluxquantic.tarothamster</code>, <code>com.marjory.app</code>, <code>app.calmsense.studio</code>.
+        </p>
+      </div>
+
+      <div class="card span-5" id="privacy">
         <h2>Contact & Support</h2>
         <p class="muted">
-          Support Email: <a class="link" href="mailto:luminadigitale@gmail.com">luminadigitale@gmail.com</a><br/>
-          You may contact me regarding support requests, feedback, or questions about my applications.
+          Email: <a href="mailto:luminadigitale@gmail.com" style="text-decoration:underline; text-underline-offset:3px;">luminadigitale@gmail.com</a><br/>
+          Use this channel for support requests, privacy questions, or compliance-related communication.
         </p>
-      </section>
 
-      <section class="card span-6" id="privacy">
-        <h2>Privacy Policy Links</h2>
-        <p class="muted">Below are direct privacy policy pages for each currently published app:</p>
-        <ul class="apps">
-          <li>
-            <span class="pill">Tarot Hamster</span>
-            <a class="link" href="https://sites.google.com/view/tarothamster/ana-sayfa" target="_blank" rel="noopener">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <span class="pill">Marjory – Smart Productivity Companion</span>
-            <a class="link" href="https://sites.google.com/view/marjoryapp/ana-sayfa" target="_blank" rel="noopener">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <span class="pill">Calm Sense – Mental Well-Being App</span>
-            <a class="link" href="https://sites.google.com/view/calmsense/ana-sayfa" target="_blank" rel="noopener">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <span class="pill">Hida Muslim App</span>
-            <a class="link" href="https://sites.google.com/view/hidapp/ana-sayfa" target="_blank" rel="noopener">
-              Privacy Policy
-            </a>
-          </li>
-        </ul>
-      </section>
+        <div style="margin-top:12px; display:flex; flex-wrap:wrap; gap:10px;">
+          <a class="btn" href="mailto:luminadigitale@gmail.com">Send Email</a>
+          <a class="btn" href="#safety">Data Safety</a>
+        </div>
+      </div>
 
-      <section class="card span-12">
+      <div class="card span-12" id="safety">
         <h2>Data Safety</h2>
         <p class="muted">
-          My applications do not collect personally identifiable information unless explicitly required
-          for functionality. If ads or analytics services are used, they may collect anonymized data in
-          compliance with Google Play User Data and Families policies.
+          Apps are designed with data minimization in mind. Personally identifiable information is not collected unless a feature explicitly requires it.
+          If advertising or analytics SDKs are used (e.g., Google AdMob), they may process limited non-personal signals (such as device identifiers or coarse region)
+          under their own policies and controls.
         </p>
-      </section>
+        <ul class="muted" style="margin:10px 0 0 18px;">
+          <li>Prefer offline/local processing for core features when possible.</li>
+          <li>No unnecessary permissions (contacts, SMS, precise location) by default.</li>
+          <li>Users can manage ad personalization via device/Google settings where applicable.</li>
+        </ul>
+      </div>
 
-      <section class="card span-12">
+      <div class="card span-12">
         <h2>Ownership</h2>
-        <p class="muted">
-          All rights reserved © Taha Bayar
-        </p>
-      </section>
-    </main>
+        <p class="muted">All rights reserved © <span id="year"></span> Taha Bayar</p>
+      </div>
+
+    </section>
 
     <footer>
-      Last updated: <span id="date"></span>
+      <div>Developer website • Lightweight, fast, responsive</div>
     </footer>
 
   </div>
 
   <script>
-    // otomatik tarih
     const d = new Date();
     document.getElementById("date").textContent =
       d.toLocaleDateString("en-GB", { year:"numeric", month:"long", day:"numeric" });
+    document.getElementById("year").textContent = d.getFullYear();
   </script>
 </body>
 </html>
+
 

@@ -421,6 +421,102 @@
       box-shadow:none;
     }
 
+
+    /* ===== Store profiles & web projects ===== */
+    .store-profiles{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:10px;
+      margin:14px 0 18px;
+    }
+    .store-profile{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      transition:.18s ease;
+    }
+    .store-profile:hover{
+      transform:translateY(-1px);
+      border-color:rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+    }
+    .store-profile b{display:block;font-size:14px;}
+    .store-profile span{display:block;margin-top:2px;font-size:12px;color:var(--muted);}
+    .store-arrow{font-size:18px;color:#dbe6ff;flex:0 0 auto;}
+
+    .projects-grid{
+      display:grid;
+      gap:12px;
+      grid-template-columns:repeat(12, 1fr);
+      margin-top:8px;
+    }
+    .project{
+      grid-column:span 4;
+      border-radius:var(--r);
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.05);
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      min-height:190px;
+      transition:.18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .project:hover{
+      transform:translateY(-2px);
+      border-color:rgba(255,255,255,.18);
+      background:rgba(255,255,255,.07);
+    }
+    .project::before{
+      content:"";
+      position:absolute;
+      width:180px;height:180px;
+      right:-80px;top:-90px;
+      border-radius:999px;
+      background:radial-gradient(circle, rgba(34,211,238,.15), transparent 66%);
+      pointer-events:none;
+    }
+    .project h3{margin:0;font-size:16px;letter-spacing:-.01em;}
+    .project p{margin:10px 0 0;font-size:13px;color:var(--muted);}
+    .project .app-actions{margin-top:auto;}
+    .project.reference{
+      border-color:rgba(34,211,238,.24);
+      background:linear-gradient(180deg, rgba(34,211,238,.07), rgba(255,255,255,.04));
+    }
+    .badge.client{
+      border-color:rgba(34,211,238,.35);
+      background:rgba(34,211,238,.10);
+    }
+    .section-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:6px;
+    }
+    .section-head h2{margin-bottom:4px;}
+    .section-head p{margin:0;max-width:72ch;}
+    .mini-note{font-size:12px;color:var(--muted2);}
+    .app-actions .link-btn{
+      width:auto;
+      flex:1 1 130px;
+    }
+
+    @media (max-width: 980px){
+      .project{grid-column:span 6;}
+    }
+    @media (max-width: 620px){
+      .store-profiles{grid-template-columns:1fr;}
+      .project{grid-column:span 12;}
+    }
+
     /* ===== Footer ===== */
     footer{
       margin-top:18px;
@@ -463,10 +559,11 @@
 
       <nav class="nav" aria-label="Primary navigation">
         <a href="#apps">Apps</a>
-        <a href="#privacy">Privacy</a>
+        <a href="#projects">Web Projects</a>
+        <a href="#stores">Store Profiles</a>
+        <a href="#privacy">Support</a>
         <a href="#safety">Data Safety</a>
-        <a class="cta" href="mailto:luminadigitale@gmail.com">Support</a>
-        <a class="cta primary" href="#apps">Get Apps</a>
+        <a class="cta primary" href="#projects">Portfolio</a>
       </nav>
     </div>
   </div>
@@ -482,19 +579,19 @@
           <p class="sub">
             Biologist • Software Developer • E-commerce Specialist • Agency Owner
             <br/>
-            Building practical apps for productivity, mental well-being, and lightweight user tools.
+            Building and shipping mobile apps, web products, games, and practical digital tools.
           </p>
 
           <div class="tagline" aria-label="Highlights">
-            <span class="chip">Privacy-first approach</span>
-            <span class="chip">Minimal data collection</span>
-            <span class="chip">Global audience</span>
-            <span class="chip">Fast support</span>
+            <span class="chip">Mobile Apps</span>
+            <span class="chip">Web Products</span>
+            <span class="chip">Games</span>
+            <span class="chip">E-commerce</span>
           </div>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#apps" aria-label="See apps">Browse Apps</a>
-            <a class="btn" href="#privacy" aria-label="Privacy policies">Privacy Policies</a>
+            <a class="btn primary" href="#projects" aria-label="See projects">View Projects</a>
+            <a class="btn" href="#apps" aria-label="See apps">Browse Apps</a>
             <a class="btn ghost" href="mailto:luminadigitale@gmail.com" aria-label="Contact support">Contact Support</a>
           </div>
         </div>
@@ -511,16 +608,16 @@
           <div class="stat">
             <div class="check" aria-hidden="true"></div>
             <div>
-              <b>Privacy policy per app</b>
-              <p>Direct policy links for each published application.</p>
+              <b>Verified store presence</b>
+              <p>Direct Google Play and App Store publisher links.</p>
             </div>
           </div>
 
           <div class="stat">
             <div class="check" aria-hidden="true"></div>
             <div>
-              <b>Data minimization</b>
-              <p>Apps prioritize offline/local processing where possible.</p>
+              <b>Web & mobile portfolio</b>
+              <p>Independent products, games, web platforms, and client work.</p>
             </div>
           </div>
 
@@ -534,91 +631,246 @@
     <!-- Content -->
     <section class="section">
 
-      <div class="card span-7" id="apps">
-        <h2>Apps</h2>
-        <p class="muted">
-          Published apps are listed below with direct Google Play and Privacy Policy buttons.
-          Hida will automatically be ready here when it goes live.
-        </p>
+      <div class="card" id="stores">
+        <div class="section-head">
+          <div>
+            <h2>Store Profiles</h2>
+            <p class="muted">Official publisher profiles for apps released under Taha Bayar.</p>
+          </div>
+        </div>
+
+        <div class="store-profiles">
+          <a class="store-profile" href="https://play.google.com/store/apps/dev?id=5415958922939036186" target="_blank" rel="noopener">
+            <div>
+              <b>Google Play — Taha Bayar</b>
+              <span>Android apps & games</span>
+            </div>
+            <div class="store-arrow" aria-hidden="true">↗</div>
+          </a>
+
+          <a class="store-profile" href="https://apps.apple.com/tr/developer/taha-bayar/id6786097251" target="_blank" rel="noopener">
+            <div>
+              <b>App Store — TAHA BAYAR</b>
+              <span>iPhone & iPad apps</span>
+            </div>
+            <div class="store-arrow" aria-hidden="true">↗</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="card" id="apps">
+        <div class="section-head">
+          <div>
+            <h2>Mobile Apps & Games</h2>
+            <p class="muted">
+              Published products with direct store links. App Store buttons are shown only where a current listing was verified.
+            </p>
+          </div>
+          <div class="mini-note">Android • iOS • Games • Utilities</div>
+        </div>
 
         <div class="apps-grid">
 
-          <!-- Tarot Hamster -->
+          <article class="app" aria-label="CarQR app">
+            <div class="app-top">
+              <p class="app-name">CarQR</p>
+              <span class="badge">Auto & Utilities</span>
+            </div>
+            <p class="app-desc">QR-based vehicle alerts that let people notify a car owner without exposing the owner's phone number.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.carqr.app" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/carqr-app/id6786097249" target="_blank" rel="noopener">App Store</a>
+              <a class="link-btn" href="https://carqrapp.com/" target="_blank" rel="noopener">Website</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="Scam Finder app">
+            <div class="app-top">
+              <p class="app-name">Scam Finder</p>
+              <span class="badge">Security</span>
+            </div>
+            <p class="app-desc">Anti-scam toolkit for checking suspicious links, messages, phone numbers, QR codes, and common fraud signals.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.scamfinder" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/scam-finder/id6806439428" target="_blank" rel="noopener">App Store</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="Marjory app">
+            <div class="app-top">
+              <p class="app-name">Marjory</p>
+              <span class="badge">Business</span>
+            </div>
+            <p class="app-desc">Pricing, profit, margin, fee, tax, inventory, shipping, and e-commerce calculation tools for sellers.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.marjory.app" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/marjory/id6796778197" target="_blank" rel="noopener">App Store</a>
+              <a class="link-btn" href="https://sites.google.com/view/marjoryapp/ana-sayfa" target="_blank" rel="noopener">Privacy</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="Hida Muslim app">
+            <div class="app-top">
+              <p class="app-name">Hida Muslim App</p>
+              <span class="badge">Lifestyle</span>
+            </div>
+            <p class="app-desc">Prayer times, Qibla, duas, dhikr, Islamic calendar, and everyday Muslim lifestyle tools.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.hida" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/hida-muslim-app/id6787553560" target="_blank" rel="noopener">App Store</a>
+              <a class="link-btn" href="https://sites.google.com/view/hidapp/ana-sayfa" target="_blank" rel="noopener">Privacy</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="FluxCore game">
+            <div class="app-top">
+              <p class="app-name">FluxCore</p>
+              <span class="badge">Arcade Game</span>
+            </div>
+            <p class="app-desc">Fast-paced arcade survival game built around reflexes, timing, precision movement, and level progression.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.orbitflux" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/fluxcore/id6787444573" target="_blank" rel="noopener">App Store</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="Under The Bed Teddy Defense game">
+            <div class="app-top">
+              <p class="app-name">Under The Bed: Teddy Defense</p>
+              <span class="badge">Action Game</span>
+            </div>
+            <p class="app-desc">Action-defense game where players build defenses, fight waves of monsters, and protect a teddy bear.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.underthebed.game" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/under-the-bed-teddy-defense/id6787531629" target="_blank" rel="noopener">App Store</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="My Baby Care Tracker app">
+            <div class="app-top">
+              <p class="app-name">My Baby Care Tracker</p>
+              <span class="badge">Parenting</span>
+            </div>
+            <p class="app-desc">Newborn care tracker for feeding, sleep, diapers, growth, routines, reminders, and daily reports.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.luminadigitale.mybaby" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://apps.apple.com/tr/app/my-baby-care-tracker/id6787539325" target="_blank" rel="noopener">App Store</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="Nemorix game">
+            <div class="app-top">
+              <p class="app-name">Nemorix</p>
+              <span class="badge">Puzzle Game</span>
+            </div>
+            <p class="app-desc">Pattern-memory game that combines rhythm, attention, short-term memory, and increasingly difficult levels.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.nemorix.game" target="_blank" rel="noopener">Google Play</a>
+            </div>
+          </article>
+
+          <article class="app" aria-label="Calm Sense app">
+            <div class="app-top">
+              <p class="app-name">Calm Sense</p>
+              <span class="badge">Well-Being</span>
+            </div>
+            <p class="app-desc">Mindfulness, breathing, relaxation, focus, and personal well-being tools with an offline-first approach.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=app.calmsense.studio" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://sites.google.com/view/calmsense/ana-sayfa" target="_blank" rel="noopener">Privacy</a>
+            </div>
+          </article>
+
           <article class="app" aria-label="Tarot Hamster app">
             <div class="app-top">
               <p class="app-name">Tarot Hamster</p>
               <span class="badge">Lifestyle</span>
             </div>
-            <p class="app-desc">
-              Tarot readings, numerology and personal prompts with a privacy-first design.
-            </p>
+            <p class="app-desc">Tarot readings, decision prompts, numerology, breathing, and calm-focused lifestyle tools.</p>
             <div class="app-actions">
-              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.fluxquantic.tarothamster" target="_blank" rel="noopener">
-                Get it on Google Play
-              </a>
-              <a class="link-btn" href="https://sites.google.com/view/tarothamster/ana-sayfa" target="_blank" rel="noopener">
-                Privacy Policy
-              </a>
+              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.fluxquantic.tarothamster" target="_blank" rel="noopener">Google Play</a>
+              <a class="link-btn" href="https://sites.google.com/view/tarothamster/ana-sayfa" target="_blank" rel="noopener">Privacy</a>
             </div>
           </article>
 
-          <!-- Marjory -->
-          <article class="app" aria-label="Marjory app">
+        </div>
+      </div>
+
+      <div class="card" id="projects">
+        <div class="section-head">
+          <div>
+            <h2>Web Projects</h2>
+            <p class="muted">Products, platforms, and sites I have built or developed.</p>
+          </div>
+          <div class="mini-note">Independent products + client work</div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project">
             <div class="app-top">
-              <p class="app-name">Marjory — Smart Productivity Companion</p>
-              <span class="badge">Productivity</span>
+              <h3>GamersPilot</h3>
+              <span class="badge">Gaming / SaaS</span>
             </div>
-            <p class="app-desc">
-              Lightweight calculators and planning tools focused on speed and simplicity.
-            </p>
+            <p>Steam backlog planner and gaming toolkit with library ranking, discovery, price tools, and interactive features.</p>
             <div class="app-actions">
-              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.marjory.app" target="_blank" rel="noopener">
-                Get it on Google Play
-              </a>
-              <a class="link-btn" href="https://sites.google.com/view/marjoryapp/ana-sayfa" target="_blank" rel="noopener">
-                Privacy Policy
-              </a>
+              <a class="link-btn primary" href="https://gamerspilot.com/" target="_blank" rel="noopener">Visit Website ↗</a>
             </div>
           </article>
 
-          <!-- Calm Sense -->
-          <article class="app" aria-label="Calm Sense app">
+          <article class="project">
             <div class="app-top">
-              <p class="app-name">Calm Sense — Mental Well-Being App</p>
-              <span class="badge">Well-Being</span>
+              <h3>Lumina Digitale</h3>
+              <span class="badge">Agency / E-commerce</span>
             </div>
-            <p class="app-desc">
-              Mental well-being features with a minimal, user-controlled data approach.
-            </p>
+            <p>E-commerce, web, advertising, growth consultancy, and digital tools presented under the Lumina brand.</p>
             <div class="app-actions">
-              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=app.calmsense.studio" target="_blank" rel="noopener">
-                Get it on Google Play
-              </a>
-              <a class="link-btn" href="https://sites.google.com/view/calmsense/ana-sayfa" target="_blank" rel="noopener">
-                Privacy Policy
-              </a>
+              <a class="link-btn primary" href="https://luminadigitale.com/" target="_blank" rel="noopener">Visit Website ↗</a>
             </div>
           </article>
 
-          <!-- Hida (future-ready; will work once live) -->
-          <article class="app" aria-label="Hida Muslim App">
+          <article class="project">
             <div class="app-top">
-              <p class="app-name">Hida Muslim App</p>
-              <span class="badge">Belief</span>
+              <h3>CarQR</h3>
+              <span class="badge">Web Platform</span>
             </div>
-            <p class="app-desc">
-              Religious faith service.
-            </p>
+            <p>QR-based vehicle alert platform with browser access plus native Android and iOS applications.</p>
             <div class="app-actions">
-              <a class="link-btn primary" href="https://play.google.com/store/apps/details?id=com.hida" target="_blank" rel="noopener" aria-disabled="true">
-                Google Play (not live yet)
-              </a>
-              <a class="link-btn" href="https://sites.google.com/view/hidapp/ana-sayfa" target="_blank" rel="noopener">
-                Privacy Policy
-              </a>
+              <a class="link-btn primary" href="https://carqrapp.com/" target="_blank" rel="noopener">Visit Website ↗</a>
             </div>
           </article>
 
+          <article class="project">
+            <div class="app-top">
+              <h3>Skater</h3>
+              <span class="badge">Jobs / Matching</span>
+            </div>
+            <p>Swipe-based job matching platform connecting job seekers and verified employers through mutual matches.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://skaterjob.com/" target="_blank" rel="noopener">Visit Website ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="app-top">
+              <h3>Kionel</h3>
+              <span class="badge">Lab Workflows / Security</span>
+            </div>
+            <p>Verifiable file handover for isolated laboratory and OT systems, enabling screen-to-camera transfer with signed receipts and offline verification.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://kionel.com/" target="_blank" rel="noopener">Visit Website ↗</a>
+            </div>
+          </article>
+
+          <article class="project reference">
+            <div class="app-top">
+              <h3>Namera Academy</h3>
+              <span class="badge client">Client / Reference Work</span>
+            </div>
+            <p>German learning, lessons, pronunciation, and exam platform. Developed as client work; the product and brand are not owned by me.</p>
+            <div class="app-actions">
+              <a class="link-btn primary" href="https://academy.nam-era.com/" target="_blank" rel="noopener">Visit Website ↗</a>
+            </div>
+          </article>
         </div>
       </div>
 
@@ -657,7 +909,7 @@
     </section>
 
     <footer>
-      <div>Developer website • Lightweight, fast, responsive</div>
+      <div>Independent apps, games & web products • Lightweight, fast, responsive</div>
     </footer>
 
   </div>
@@ -669,4 +921,4 @@
     document.getElementById("year").textContent = d.getFullYear();
   </script>
 </body>
-</html>
+</html>s

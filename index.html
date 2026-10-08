@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="color-scheme" content="dark"/>
-  <title>Taha Bayar — Official Developer Website</title>
-  <meta name="description" content="Official developer website for Taha Bayar apps. Download links, privacy policies, support, and data safety."/>
+  <title>Taha Bayar — Scientific Software Developer &amp; Research Data Analysis</title>
+  <meta name="description" content="Taha Bayar: scientific software developer and biology graduate. Python research analysis, Kionel, CFPS research, published mobile apps and web products."/>
 
   <style>
     :root{
@@ -543,6 +543,30 @@
       *{ scroll-behavior:auto !important; transition:none !important; }
     }
   </style>
+
+  <link rel="canonical" href="https://apeiron01.github.io/" />
+  <meta property="og:title" content="Taha Bayar — Scientific Software &amp; Research Data Analysis" />
+  <meta property="og:description" content="Biology background, reproducible Python analysis and shipped software. Explore Kionel, CFPS research and mobile products." />
+  <meta property="og:url" content="https://apeiron01.github.io/" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="career.css" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Taha Bayar",
+  "url": "https://apeiron01.github.io/",
+  "jobTitle": "Scientific Software Developer",
+  "sameAs": [
+    "https://github.com/Apeiron01",
+    "https://www.linkedin.com/in/tahabyr/"
+  ],
+  "knowsAbout": [
+    "Python",
+    "Research data analysis",
+    "Biology",
+    "Software development"
+  ]
+}</script>
 </head>
 
 <body>
@@ -553,12 +577,12 @@
         <div class="logo" aria-hidden="true"></div>
         <div class="brand-title">
           <b>Taha Bayar</b>
-          <span>Official Developer Website</span>
+          <span>Scientific Software &amp; Research</span>
         </div>
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#apps">Apps</a>
+        <a href="#research">Research</a><a href="#apps">Apps</a>
         <a href="#projects">Web Projects</a>
         <a href="#stores">Store Profiles</a>
         <a href="#privacy">Support</a>
@@ -574,25 +598,16 @@
     <section class="hero" aria-label="Hero">
       <div class="hero-inner">
         <div>
-          <div class="kicker"><span class="dot"></span> Official Developer Website</div>
+          <div class="kicker"><span class="dot"></span> Scientific Software &amp; Research</div>
           <h1>Taha Bayar</h1>
-          <p class="sub">
-            Biologist • Software Developer • E-commerce Specialist • Agency Owner
-            <br/>
-            Building and shipping mobile apps, web products, games, and practical digital tools.
-          </p>
+          <p class="sub">Scientific Software Developer · Python &amp; Research Data Analysis<br/>Biology graduate building reproducible analysis tools, laboratory software and mobile/web products. Career focus: scientific software and applied AI, with further specialisation in life sciences and bioinformatics.</p>
 
-          <div class="tagline" aria-label="Highlights">
-            <span class="chip">Mobile Apps</span>
-            <span class="chip">Web Products</span>
-            <span class="chip">Games</span>
-            <span class="chip">E-commerce</span>
-          </div>
+          <div class="tagline" aria-label="Highlights"><span class="chip">Scientific Software</span><span class="chip">Python &amp; Data Analysis</span><span class="chip">Lab Workflows</span><span class="chip">Published Products</span></div>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#projects" aria-label="See projects">View Projects</a>
+            <a class="btn primary" href="#research" aria-label="See research and case studies">Explore Research</a>
             <a class="btn" href="#apps" aria-label="See apps">Browse Apps</a>
-            <a class="btn ghost" href="mailto:iletisim@luminadigitale.com" aria-label="Contact support">Contact Support</a>
+            <a class="btn ghost" href="mailto:iletisim@luminadigitale.com" aria-label="Discuss research or software work">Get in Touch</a>
           </div>
         </div>
 
@@ -600,8 +615,8 @@
           <div class="stat">
             <div class="check" aria-hidden="true"></div>
             <div>
-              <b>Clear support channel</b>
-              <p>Single email for support, privacy, and compliance requests.</p>
+              <b>Research and implementation</b>
+              <p>CFPS decision analysis and Kionel file handover, documented in independent preprints.</p>
             </div>
           </div>
 
@@ -631,7 +646,39 @@
     <!-- Content -->
     <section class="section">
 
-      <div class="card" id="stores">
+
+      <div class="card" id="research">
+        <div class="section-head"><div><h2>Research &amp; Engineering Case Studies</h2><p class="muted">Independent preprints published on Zenodo on 30 September 2026. These are research records, not claims of peer review or independent product certification.</p></div></div>
+        <div class="research-grid">
+          <article class="research-case">
+            <span class="badge">Scientific data analysis · Python</span>
+            <h3>CFPS reactor selection: a scenario-weighted decision framework</h3>
+            <dl>
+              <dt>Problem</dt><dd>Cell-free protein synthesis reactor formats involve different trade-offs. A single ranking can hide the priorities behind a selection.</dd>
+              <dt>My work</dt><dd>Built a targeted literature dataset and a Python multi-criteria analysis workflow. Compared reactor formats under scenario-specific weights and produced tables and figures.</dd>
+              <dt>Evidence</dt><dd>The preprint is accompanied by an analysis archive with the dataset, scripts, tables and figures, so the scoring and assumptions can be inspected.</dd>
+              <dt>What the result means</dt><dd>A decision aid for examining trade-offs and the effect of scenario priorities, rather than an experimentally validated prediction of reactor performance.</dd>
+              <dt>Limitations</dt><dd>The literature search was targeted, not exhaustive. Conclusions depend on dataset coverage, scoring choices and scenario weights.</dd>
+            </dl>
+            <a class="link-btn primary" href="https://zenodo.org/records/23070875" target="_blank" rel="noopener noreferrer">Read preprint &amp; analysis archive ↗</a>
+          </article>
+          <article class="research-case">
+            <span class="badge">Scientific software · Lab workflows</span>
+            <h3>Kionel: verifiable handover from isolated systems</h3>
+            <dl>
+              <dt>Problem</dt><dd>Files leaving an isolated laboratory or industrial computer need evidence of what was dispatched and what arrived.</dd>
+              <dt>My work</dt><dd>Developed signed dispatch records, receiver receipts and offline verification. The research examines one-way transfer through screens, paper and serial cables.</dd>
+              <dt>Evidence</dt><dd>The technical preprint documents the protocol, formal modelling and benchmarks under stated assumptions.</dd>
+              <dt>What the result means</dt><dd>Inspectable evidence of file handover. A signed receipt records what the receiving device accepted; it does not establish that a person read the file.</dd>
+              <dt>Limitations</dt><dd>The evaluation includes synthetic benchmarks and limited device testing. It does not establish an independent security audit, regulatory certification or validation in every deployment.</dd>
+            </dl>
+            <div class="research-actions"><a class="link-btn primary" href="https://zenodo.org/records/23064776" target="_blank" rel="noopener noreferrer">Read technical preprint ↗</a><a class="link-btn" href="https://kionel.com/" target="_blank" rel="noopener noreferrer">Explore Kionel ↗</a></div>
+          </article>
+        </div>
+        <div class="career-note"><h3>Background and direction</h3><p>BSc in Biology, Ankara University (2020–2024). Laboratory experience in clinical biochemistry and microbiology supports my work on research data and lab workflows. My practical tools include Python, SQL, Flutter, JavaScript, HTML/CSS, React and Git/GitHub.</p><p>I am interested in scientific software, research software and applied AI implementation roles. Life sciences and bioinformatics are the direction of further specialisation.</p></div>
+      </div>
+
+<div class="card" id="stores">
         <div class="section-head">
           <div>
             <h2>Store Profiles</h2>
@@ -806,8 +853,7 @@
         </div>
 
         <div class="projects-grid">
-          <article class="project">
-            <div class="app-top">
+          <article class="project"><a class="project-logo" href="https://gamerspilot.com/" target="_blank" rel="noopener noreferrer" aria-label="GamersPilot"><img src="assets/references/gamerspilot.svg" alt="GamersPilot logo" width="80" height="80" loading="lazy" decoding="async" /></a><div class="app-top">
               <h3>GamersPilot</h3>
               <span class="badge">Gaming / SaaS</span>
             </div>
@@ -822,14 +868,13 @@
               <h3>Lumina Digitale</h3>
               <span class="badge">Agency / E-commerce</span>
             </div>
-            <p>E-commerce, web, advertising, growth consultancy, and digital tools presented under the Lumina brand.</p>
+            <p>Founded in 2024. Software development, workflow automation, e-commerce consulting, SEO and practical training. Product references are distinguished from client development work.</p>
             <div class="app-actions">
               <a class="link-btn primary" href="https://luminadigitale.com/" target="_blank" rel="noopener">Visit Website ↗</a>
             </div>
           </article>
 
-          <article class="project">
-            <div class="app-top">
+          <article class="project"><a class="project-logo" href="https://carqrapp.com/" target="_blank" rel="noopener noreferrer" aria-label="CarQR"><img src="assets/references/carqr.png" alt="CarQR logo" width="80" height="80" loading="lazy" decoding="async" /></a><div class="app-top">
               <h3>CarQR</h3>
               <span class="badge">Web Platform</span>
             </div>
@@ -839,8 +884,7 @@
             </div>
           </article>
 
-          <article class="project">
-            <div class="app-top">
+          <article class="project"><a class="project-logo" href="https://skaterjob.com/" target="_blank" rel="noopener noreferrer" aria-label="Skater"><img src="assets/references/skater.png" alt="Skater logo" width="80" height="80" loading="lazy" decoding="async" /></a><div class="app-top">
               <h3>Skater</h3>
               <span class="badge">Jobs / Matching</span>
             </div>
@@ -850,19 +894,17 @@
             </div>
           </article>
 
-          <article class="project">
-            <div class="app-top">
+          <article class="project"><a class="project-logo" href="https://kionel.com/" target="_blank" rel="noopener noreferrer" aria-label="Kionel"><img src="assets/references/kionel.svg" alt="Kionel logo" width="80" height="80" loading="lazy" decoding="async" /></a><div class="app-top">
               <h3>Kionel</h3>
               <span class="badge">Lab Workflows / Security</span>
             </div>
-            <p>Verifiable file handover for isolated laboratory and OT systems, enabling screen-to-camera transfer with signed receipts and offline verification.</p>
+            <p>Founded in 2026. Verifiable file handover for isolated laboratory and OT systems, with signed receipts and offline verification. See the engineering case study above for research evidence and limitations.</p>
             <div class="app-actions">
               <a class="link-btn primary" href="https://kionel.com/" target="_blank" rel="noopener">Visit Website ↗</a>
             </div>
           </article>
 
-          <article class="project reference">
-            <div class="app-top">
+          <article class="project reference"><a class="project-logo" href="https://academy.nam-era.com/" target="_blank" rel="noopener noreferrer" aria-label="Namera Academy"><img src="assets/references/namera.png" alt="Namera Academy logo" width="80" height="80" loading="lazy" decoding="async" /></a><div class="app-top">
               <h3>Namera Academy</h3>
               <span class="badge client">Client / Reference Work</span>
             </div>
@@ -874,7 +916,16 @@
         </div>
       </div>
 
-      <div class="card span-5" id="privacy">
+
+      <div class="card" id="in-development">
+        <h2>In Development &amp; Testing</h2><p class="muted">Two upcoming products for iOS and Android. Public store links will be added after release.</p>
+        <div class="research-grid upcoming-grid">
+          <article class="project"><div class="app-top"><h3>Mori: Study Timer &amp; Focus</h3><span class="badge">Closed testing</span></div><p>A focus and study-time app. The supplied Google Play status is closed testing; public iOS and Android releases are planned.</p></article>
+          <article class="project"><div class="app-top"><h3>Mergeverse: Merge &amp; Explore</h3><span class="badge">Development / internal test</span></div><p>A mobile merge game. The supplied Google Play status is draft/internal testing; public iOS and Android releases are planned.</p></article>
+        </div>
+      </div>
+
+<div class="card span-5" id="privacy">
         <h2>Contact & Support</h2>
         <p class="muted">
           Email: <a href="mailto:iletisim@luminadigitale.com" style="text-decoration:underline; text-underline-offset:3px;">iletisim@luminadigitale.com</a><br/>
